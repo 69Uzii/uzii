@@ -1,0 +1,494 @@
+const root = document.getElementById('root');
+
+function getChatState() {
+    return document.querySelector(".BattleChatComponentStyle-inputContainer")
+}
+
+
+let HackGUI = document.createElement("div");
+
+let HackGUIStyle = `
+
+.App {
+
+display: flex;
+background: rgb(12 12 12 / 28%);
+height: 340px;
+width: 340px;
+position: absolute;
+right: 40%;
+opacity: 0,75%;
+transform: translate(-50%,-50%);
+border-radius: 25px;
+border-width: 1px;
+top: 40%;
+border: 2px solid  #FF0000);
+backdrop-filter: blur(3px);
+
+}`
+
+let addStyle = function(styleString) {
+    var style = document.createElement('style');
+
+    style.innerHTML = styleString
+
+    document.head.appendChild(style)
+
+    return style
+
+}
+
+addStyle(HackGUIStyle)
+
+HackGUI.className = 'App'
+
+let Title = document.createElement("span");
+
+let TitleStyle = `
+
+.TitleSt {
+
+position: absolute;
+color: #ff0000;
+text-align: center;
+font-size: 20px;
+padding: 34px 39%;
+
+
+
+}`
+
+addStyle(TitleStyle)
+
+Title.className = 'TitleSt'
+
+Title.innerText = 'uzi'
+
+HackGUI.appendChild(Title)
+
+let Button1 = document.createElement("div");
+let Button2 = document.createElement("span");
+
+let InnerCircle1 = document.createElement("span");
+let InnerCircle2 = document.createElement("span");
+
+let ButtonStyle = `
+
+.Button {
+
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: #00000000;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    transition: .5s;
+    padding: 6px 8%;
+    right: 8%;
+
+}
+
+.innerCircle {
+
+    width: 35%;
+    height: 92%;
+    background-color: blue;
+    position: absolute;
+    border-radius: 10px;
+    top: 2%;
+    right: 65%;
+    transition: right 0.7s;
+
+}`
+
+addStyle(ButtonStyle)
+
+Button1.className = 'Button'
+
+Button1.style.top = '100px'
+
+InnerCircle1.className = 'innerCircle'
+
+Button1.appendChild(InnerCircle1)
+
+HackGUI.appendChild(Button1)
+
+Button2.className = 'Button'
+
+Button2.style.top = '150px'
+
+InnerCircle2.className = 'innerCircle'
+
+Button2.appendChild(InnerCircle2)
+
+HackGUI.appendChild(Button2)
+
+let slider1 = document.createElement("input")
+
+slider1.type = "range"
+
+slider1.step = 5
+
+slider1.min = 0
+slider1.max = 200
+slider1.style.position = "absolute"
+slider1.style.marginLeft = "42%"
+slider1.style.top = "200px"
+
+let slider2 = document.createElement("input")
+
+slider2.type = "range"
+
+slider2.step = 5
+
+slider2.min = 0
+slider2.max = 200
+slider2.style.position = "absolute"
+slider2.style.marginLeft = "42%"
+slider2.style.top = "250px"
+
+let sliderStyle = `
+.slider {
+    user-select: none;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    font-family: Open-Sans;
+    font-size: 1em;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    height: 17px;
+    border: 2px solid rgba(255,255,255,0.2);
+    opacity: 0.8;
+    background: radial-gradient(50% 100% at 50% 100%, #395673 0%, #001926 100%;
+    width: 81px;
+    left: 15%;
+
+}
+
+.slider::-webkit-slider-thumb{
+cursor:pointer;
+appearance:none;
+height:17px;
+width:17px;
+outline:none;
+border-radius:50%;
+position:revert;
+background: blue;
+box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+}`
+
+addStyle(sliderStyle)
+
+slider1.className = 'slider'
+slider2.className = 'slider'
+
+HackGUI.appendChild(slider1)
+HackGUI.appendChild(slider2)
+
+let defval = slider1.value = 0
+
+let Label1 = document.createElement("span")
+let Label2 = document.createElement("span")
+let Label3 = document.createElement("span")
+let Label4 = document.createElement("span")
+
+let LabelStyle = `
+
+.label {
+
+position: absolute;
+color: red;
+font-size: 13px;
+padding: 2px 7%;
+font-weight: 1000;
+
+}`
+
+addStyle(LabelStyle)
+
+Label1.className = 'label'
+Label2.className = 'label'
+Label3.className = 'label'
+Label4.className = 'label'
+
+Label1.innerText = '5/1'
+Label2.innerText = '2/3/S4'
+
+
+setInterval(function UpdateInnerText() {
+    Label3.innerText = ` 5/1 [${slider1.value}] (Ms):`
+    Label4.innerText = ` 1/2/3/4/5 [${slider2.value}] (Ms):`
+}, -1)
+
+Label1.style.top = '95px'
+Label2.style.top = '145px'
+Label3.style.top = '200px'
+Label4.style.top = '250px'
+
+HackGUI.appendChild(Label1)
+HackGUI.appendChild(Label2)
+HackGUI.appendChild(Label3)
+HackGUI.appendChild(Label4)
+
+
+
+
+function clicker() {
+    const minedown = document.body.dispatchEvent(
+        new KeyboardEvent('keydown', {
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            key: "5",
+            keyCode: 53,
+            which: 53,
+            code: "Digit5",
+            location: 0,
+            altKey: false,
+            ctrlKey: false,
+            metaKey: false,
+            shiftKey: false,
+            repeat: true
+        })
+    )
+    const mineup = document.body.dispatchEvent(
+        new KeyboardEvent('keyup', {
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            key: "5",
+            keyCode: 53,
+            which: 53,
+            code: "Digit5",
+            location: 0,
+            altKey: false,
+            ctrlKey: false,
+            metaKey: false,
+            shiftKey: false,
+            repeat: true
+        })
+    )
+    const repairdown = document.body.dispatchEvent(
+        new KeyboardEvent('keydown', {
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            key: "1",
+            keyCode: 49,
+            which: 49,
+            code: "Digit1",
+            location: 0,
+            altKey: false,
+            ctrlKey: false,
+            metaKey: false,
+            shiftKey: false,
+            repeat: true
+        })
+    )
+    const repairup = document.body.dispatchEvent(
+        new KeyboardEvent('keyup', {
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            key: "1",
+            keyCode: 49,
+            which: 49,
+            code: "Digit1",
+            location: 0,
+            altKey: false,
+            ctrlKey: false,
+            metaKey: false,
+            shiftKey: false,
+            repeat: true
+        })
+    )
+}
+
+function sups() {
+    const armordown = document.body.dispatchEvent(
+        new KeyboardEvent('keydown', {
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            key: "2",
+            keyCode: 50,
+            which: 50,
+            code: "Digit2",
+            location: 0,
+            altKey: false,
+            ctrlKey: false,
+            metaKey: false,
+            shiftKey: false,
+            repeat: true
+        })
+    )
+    const armorup = document.body.dispatchEvent(
+        new KeyboardEvent('keyup', {
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            key: "2",
+            keyCode: 50,
+            which: 50,
+            code: "Digit2",
+            location: 0,
+            altKey: false,
+            ctrlKey: false,
+            metaKey: false,
+            shiftKey: false,
+            repeat: true
+        })
+    )
+    const dmgdown = document.body.dispatchEvent(
+        new KeyboardEvent('keydown', {
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            key: "3",
+            keyCode: 51,
+            which: 51,
+            code: "Digit3",
+            location: 0,
+            altKey: false,
+            ctrlKey: false,
+            metaKey: false,
+            shiftKey: false,
+            repeat: true
+        })
+    )
+    const dmgup = document.body.dispatchEvent(
+        new KeyboardEvent('keyup', {
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            key: "3",
+            keyCode: 51,
+            which: 51,
+            code: "Digit3",
+            location: 0,
+            altKey: false,
+            ctrlKey: false,
+            metaKey: false,
+            shiftKey: false,
+            repeat: true
+        })
+    )
+    const speeddown = document.body.dispatchEvent(
+        new KeyboardEvent('keydown', {
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            key: "4",
+            keyCode: 52,
+            which: 52,
+            code: "Digit4",
+            location: 0,
+            altKey: false,
+            ctrlKey: false,
+            metaKey: false,
+            shiftKey: false,
+            repeat: true
+        })
+    )
+
+    const speedup = document.body.dispatchEvent(
+        new KeyboardEvent('keyup', {
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            key: "4",
+            keyCode: 52,
+            which: 52,
+            code: "Digit4",
+            location: 0,
+            altKey: false,
+            ctrlKey: false,
+            metaKey: false,
+            shiftKey: false,
+            repeat: true
+        })
+    )
+}
+
+let sp = 0;
+let clickerInterval;
+
+document.addEventListener('keydown', (e) => {
+    if(e.keyCode === 117 && getChatState() == null) {
+        sp++
+        if(sp%2==1) {
+            Button1.style.color = 'White'
+            Button1.children[0].style.right = "6%"
+            Button1.children[0].style.backgroundColor = "black"
+            clickerInterval = setInterval(clicker, slider1.value);
+        }
+        if(sp%2==0) {
+            clearInterval(clickerInterval);
+            Button1.children[0].style.right = "60%"
+            Button1.children[0].style.backgroundColor = "blue"
+            Button1.style.color = '#FF000)'
+        }
+    }
+});
+
+let vp = 0;
+let supsInterval;
+
+document.addEventListener('keydown', (e) => {
+    if(e.keyCode === 116 && getChatState() == null) {
+        vp++
+        if(vp%2==1) {
+            supsInterval = setInterval(sups, slider2.value);
+            Button2.style.color = 'White'
+            Button2.children[0].style.right = "6%"
+            Button2.children[0].style.backgroundColor = "black"
+        }
+        if(vp%2==0) {
+            clearInterval(supsInterval);
+            Button2.children[0].style.right = "60%"
+            Button2.children[0].style.backgroundColor = "blue"
+            Button2.style.color = '#FF000)'
+        }
+    }
+});
+
+let pressCount = 0;
+
+document.addEventListener('keydown', (e) => {
+    if (e.keyCode === 114 && getChatState() == null || e.keyCode == 115 && getChatState() == null || e.keyCode == 113 && getChatState() == null){
+        pressCount ++
+        if(pressCount%2==1){
+            root.appendChild(HackGUI)
+        }
+        if(pressCount%2==0){
+            root.removeChild(HackGUI)
+        }
+    }
+});
+
+function draggable(el) {
+    el.addEventListener('mousedown', function(e) {
+        var offsetX = e.clientX - parseInt(window.getComputedStyle(this).left);
+        var offsetY = e.clientY - parseInt(window.getComputedStyle(this).top);
+
+        function mouseMoveHandler(e) {
+            if (e.target != slider1 && e.target != slider2) {
+                el.style.top = (e.clientY - offsetY) + 'px';
+                el.style.left = (e.clientX - offsetX) + 'px';
+            }
+        }
+
+        function reset() {
+            window.removeEventListener('mousemove', mouseMoveHandler);
+            window.removeEventListener('mouseup', reset);
+        }
+
+        window.addEventListener('mousemove', mouseMoveHandler);
+        window.addEventListener('mouseup', reset);
+    });
+}
+
+draggable(HackGUI);
+
+root.appendChild(HackGUI);
